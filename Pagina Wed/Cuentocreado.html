@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Cuento Creado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🌟 Tu Cuento Creado 🌟</h1>
+            <img src="Musica.png" alt="Decoración musical" class="decor-image">
+            <img src="montañas.jpg" alt="Montañas" class="background-image">
+            <img src="rio.jpg" alt="Río" class="background-image">
+            <img src="peces.png" alt="Peces" class="decor-image">
+            <div class="story-box">
+                <p id="cuento"></p>
+            </div>
+            <a href="index.html" class="btn">⬅ Volver a la Página Principal</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var cuento = localStorage.getItem('cuento') || "No se encontró ningún cuento.";
+            document.getElementById('cuento').innerHTML = cuento.replace(/\n/g, '<br>');
+        });
+    </script>
+</body>
+</html>

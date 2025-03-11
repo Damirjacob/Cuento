@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad Cristiana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .sidebar img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        .menu {
+            list-style: none;
+            width: 100%;
+        }
+        .menu li {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            position: relative;
+        }
+        .menu li:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            flex: 1;
+            background: url('Jesus.jpg') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content h1 {
+            color: white;
+            font-size: 2em;
+            position: absolute;
+            top: 10%;
+            text-align: center;
+        }
+        .menu a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        /* Estilos para los contenedores desplegables */
+        .popup-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(10px, -50%);
+            width: 250px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            text-align: left;
+            z-index: 10;
+        }
+        /* Flecha indicadora */
+        .popup-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            transform: translateY(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+        }
+        /* Estilos del formulario */
+        .form-container {
+            display: none;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+        .form-container input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+        .form-container button {
+            background: #f39c12;
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        .story-container {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="Logo.jpg" alt="Logo">
+        <ul class="menu">
+            <li>Galería</li>
+            <li onclick="togglePopup('contacto')">Contacto
+                <div class="popup-container" id="contacto">
+                    <strong>Correo:</strong> comunidad.cristiana@gmail.com <br>
+                    <strong>Celular:</strong> 3042430713 <br>
+                    <strong>Dirección:</strong> Cr 103 Cl 44 - 83 <br>
+                    <strong>Redes Sociales:</strong> <br>
+                    <a href="https://maps.app.goo.gl/5jR74mYu3Fhgs5cX7" target="_blank" style="color: white;">
+                        Ver en Google Maps
+                    </a><br>
+                    <a href="https://facebook.com/ComunidadCristiana" target="_blank" style="color: white;">Facebook</a><br>
+                    <a href="https://instagram.com/ComunidadCristiana" target="_blank" style="color: white;">Instagram</a><br>
+                    <a href="https://twitter.com/ComunidadCristiana" target="_blank" style="color: white;">Twitter</a>
+                </div>
+            </li>
+            <li onclick="togglePopup('versiculo')">Versículo de la semana
+                <div class="popup-container" id="versiculo">
+                    <strong>2 Corintios 12:9-10</strong><br>
+                    <em>"Pero él me dijo: 'Te basta con mi gracia, pues mi poder se perfecciona en la debilidad'. Por tanto, con mayor razón me gloriaré en mis debilidades, para que repose sobre mí el poder de Cristo."</em>
+                </div>
+            </li>
+            <li onclick="togglePopup('servicios')">Servicios
+                <div class="popup-container" id="servicios">
+                    <strong>Domingos:</strong> 10 AM <br>
+                    <strong>Jueves:</strong> 7:10 PM
+                </div>
+            </li>
+            <li><a href="articulos.html">Artículos de Venta</a></li>
+            <li><a href="#" onclick="toggleForm()">Crear Cuento</a></li>
+        </div>
+        <div class="content">
+            <h1>Comunidad Cristiana Avivando El Fuego en Las Naciones</h1>
+            <div class="form-container" id="form-container">
+                <h2>Ingresa tu información</h2>
+                <input type="text" id="nombres" placeholder="Nombres y Apellidos" required>
+                <input type="text" id="apodo" placeholder="Apodo" required>
+                <input type="text" id="colorCabello" placeholder="Color de Cabello" required>
+                <input type="text" id="colorOjos" placeholder="Color de Ojos" required>
+                <input type="number" id="edad" placeholder="Edad" required>
+                <input type="text" id="hobby" placeholder="Hobby" required>
+                <button onclick="crearCuento()">Continuar</button>
+            </div>
+            <div class="story-container" id="story-container">
+                <h2>Tu Cuento</h2>
+                <p id="cuento"></p>
+            </div>
+        </div>
+    
+        <script>
+            function togglePopup(id) {
+                var popup = document.getElementById(id);
+                if (popup.style.display === "none" || popup.style.display === "") {
+                    popup.style.display = "block";
+                } else {
+                    popup.style.display = "none";
+                }
+            }
+    
+            function toggleForm() {
+                var formContainer = document.getElementById('form-container');
+                formContainer.style.display = formContainer.style.display === "none" || formContainer.style.display === "" ? "flex" : "none";
+            }
+    
+            function crearCuento() {
+    var nombres = document.getElementById('nombres').value;
+    var apodo = document.getElementById('apodo').value;
+    var colorCabello = document.getElementById('colorCabello').value;
+    var colorOjos = document.getElementById('colorOjos').value;
+    var edad = document.getElementById('edad').value;
+    var hobby = document.getElementById('hobby').value;
+
+    // Crea el cuento o muestra la información ingresada
+    var cuento = `Había una vez una persona llamada ${nombres}, aunque todos le conocían como ${apodo}. Con su cabello de color ${colorCabello} y sus ojos ${colorOjos}, a la edad de ${edad} años, ${apodo} tenía una pasión especial por ${hobby}. Un día, mientras disfrutaba de su hobby, algo increíble sucedió...
+
+Había una vez, en una pequeña ciudad rodeada de montañas y ríos cristalinos, una joven llamada ${nombres}. Desde muy pequeña, ${nombres} había aprendido de su familia sobre el amor de Dios y el poder de la fe. Sus padres le enseñaron a orar todos los días y a confiar en Dios en todo momento, sin importar las dificultades que la vida pudiera traer.
+
+A medida que crecía, ${nombres} enfrentaba desafíos como todos los jóvenes. A veces, las decisiones no eran fáciles. En su escuela, había compañeros que no compartían sus creencias y a menudo la hacían sentir diferente. Pero ella sabía que tenía un propósito en su vida: ser una luz en medio de la oscuridad, y nunca dejarse llevar por las corrientes del mundo.
+
+Un día, después de una gran tormenta, ${nombres} estaba caminando por el bosque cerca de su casa cuando encontró un pequeño niño perdido. El niño, llamado **Lucas**, parecía asustado y confundido. **${nombres}** se acercó con una sonrisa cálida y le dijo: "No tengas miedo, yo te ayudaré". Le tomó la mano y lo guió a su casa, donde su familia lo acogió con los brazos abiertos.
+
+Lucas le contó que se había perdido mientras buscaba flores para su mamá. Aunque era un niño tímido, desde ese día, Lucas comenzó a asistir a la iglesia con ${nombres} y su familia. Juntos, aprendieron acerca del amor incondicional de Dios y cómo podían ayudar a otros en sus comunidades.
+
+A medida que los años pasaron, ${nombres} se convirtió en una joven fuerte en la fe. En su corazón, sentía una pasión por compartir las enseñanzas de Cristo con todos los que conocía. Estudió la Biblia, oró por sabiduría y comenzó a liderar grupos pequeños en su iglesia local. Sabía que su llamado era ser un faro de esperanza en un mundo lleno de dolor y sufrimiento.
+
+En un campamento cristiano que organizó con su iglesia, ${nombres} compartió su testimonio sobre cómo la fe le había ayudado a superar sus temores y dudas. Les dijo a los jóvenes: "A veces la vida puede ser difícil y llena de desafíos, pero no estamos solos. Dios está con nosotros en todo momento, y siempre podemos encontrar fuerza en Él". Sus palabras tocaron los corazones de todos los presentes, y varios de ellos decidieron seguir a Cristo con mayor compromiso.
+
+Al final del campamento, ${nombres} miró al horizonte con una sonrisa tranquila. Sabía que su viaje no había terminado, y que había mucho más por hacer. Mientras caminaba hacia su hogar, pensó en cómo su vida había cambiado desde aquellos días difíciles en su adolescencia, cuando se sentía perdida y sola. Ahora, su vida estaba llena de propósito, y sabía que Dios la guiaba en cada paso que daba.
+
+${nombres} nunca dejó de confiar en Dios, y siempre recordó las palabras que su madre le había dicho cuando era pequeña: "Nunca camines sola, porque Dios siempre estará a tu lado". Y así, con fe y esperanza, ella continuó su viaje, dispuesta a llevar el amor de Cristo a todos los rincones del mundo.
+
+**Fin.**
+`;
+localStorage.setItem('cuento', cuento);
+            window.location.href = "Cuentocreado.html";
+        }
+    </script>
+</body>
+</html>

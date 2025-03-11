@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículos de Venta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .book {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .book img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .book h3 {
+            margin: 10px 0;
+        }
+        .book p {
+            font-size: 14px;
+            color: gray;
+        }
+        .quote-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .quote-btn:hover {
+            background-color: #218838;
+        }
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Libros en Venta</h1>
+    <div class="container">
+        <div class="book">
+            <img src="Libro1.jpg" alt="Libro 1">
+            <h3>El poder de la oración</h3>
+            <p>$15.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'El%20poder%20de%20la%20oración'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+        <div class="book">
+            <img src="Libro2.jpg" alt="Libro 2">
+            <h3>Viviendo en la fe</h3>
+            <p>$18.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'Viviendo%20en%20la%20fe'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+        <div class="book">
+            <img src="Libro3.jpg" alt="Libro 3">
+            <h3>El amor de Dios</h3>
+            <p>$20.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'El%20amor%20de%20Dios'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+        <div class="book">
+            <img src="Libro4.jpg" alt="Libro 4">
+            <h3>El poder de orar de madrugada</h3>
+            <p>$90.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'El%20poder%20de%20orar%20de%20madrugada'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+        <div class="book">
+            <img src="Libro5.jpg" alt="Libro 5">
+            <h3>Conociendo al Espíritu Santo</h3>
+            <p>$100.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'Conociendo%20al%20Espíritu%20Santo'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+        <div class="book">
+            <img src="Libro6.jpg" alt="Libro 6">
+            <h3>El Ayuno</h3>
+            <p>$80.000</p>
+            <a href="https://wa.me/3042430713?text=Hola,%20quiero%20cotizar%20'El%20Ayuno'" class="quote-btn" target="_blank">Cotizar</a>
+        </div>
+    </div>
+    <a href="index.html" class="back">Volver</a>
+</body>
+</html>
+
