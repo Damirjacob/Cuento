@@ -1,0 +1,37 @@
+!pip install pulp
+from pulp import *
+
+# Define los datos del problema
+oferta = [300, 400, 500]  # Oferta de los orígenes
+demanda = [200, 300, 400, 300]  # Demanda de los destinos
+costos = [[2, 4, 5, 3],
+          [3, 1, 2, 4],
+          [6, 3, 1, 2]]  # Costos de transporte
+
+# Crea el problema de minimización
+prob = LpProblem("Problema de transporte", LpMinimize)
+
+# Crea las variables de decisión
+variables = {(i, j): LpVariable(f"x{i}{j}", lowBound=0) for i in range(len(oferta)) for j in range(len(demanda))}
+
+# Define la función objetivo
+prob += lpSum(costos[i][j] * variables[(i, j)] for i in range(len(oferta)) for j in range(len(demanda)))
+
+# Define las restricciones de oferta
+for i in range(len(oferta)):
+    prob += lpSum(variables[(i, j)] for j in range(len(demanda))) <= oferta[i]
+
+# Define las restricciones de demanda
+for j in range(len(demanda)):
+    prob += lpSum(variables[(i, j)] for i in range(len(oferta))) >= demanda[j]
+
+# Resuelve el problema
+prob.solve()
+
+# Imprime el resultado
+print("Estado:", LpStatus[prob.status])
+print("Costo mínimo de transporte:", value(prob.objective))
+
+# Imprime las cantidades óptimas transportadas
+for v in prob.variables():
+    print(v.name, "=", v.varValue)
